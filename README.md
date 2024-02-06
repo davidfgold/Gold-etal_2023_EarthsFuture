@@ -47,8 +47,12 @@ This experiment has two main phases. First, the multi-site HMM is fit to the his
 ### 1. Fit the multi-site HMM and generate synthetic streamflow ensembles
 | Script Name | Description | How to Run |
 | --- | --- | --- |
-| `step_one.py` | Script to run the first part of my experiment | `python3 step_one.py -f /path/to/inputdata/file_one.csv` |
-| `step_two.py` | Script to run the last part of my experiment | `python3 step_two.py -o /path/to/my/outputdir` |
+| `fit_hmm.py` | Fits the HMM to 75 years of historical record and saves parameters to text files| `python3 fit_hmm.py` |
+| `create_synthetic_records.py` | uses the HMM parameters to generate a baseline ensemble of annual streamflow records for each basin | `python3 create_synthetic_records.py` |
+| `annual_records_to_xbm.py` | disaggregates baseline synthetic records across space and time and creates StateMod input files (xbm) | `python3 annual_records_to_xbm.py` |
+| `create_synthetic_records_climate.py` | applies climate change adjustements the HMM parameters and generates an adjusted ensemble of annual streamflow records for each basin | `python3 create_synthetic_records_climate.py` |
+| `annual_records_to_xbm_climate.py` | disaggregates climate adjusted synthetic records across space and time and creates StateMod input files (xbm) | `python3 annual_records_to_xbm_climate.py` |
+| `shift_snowmelt_monthly.py` | shifts climate adjusted streamflow records 1 month earlier to account for changes in snowmelt timing | `python3 shift_snowmelt_monthly.py` |
 
 ### 2. Run the HMM ensembles through StateMod and compress the data output
 

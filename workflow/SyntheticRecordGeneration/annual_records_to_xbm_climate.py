@@ -2,11 +2,8 @@
 import numpy as np
 import pandas as pd
 from random import random
-
-#import xbm_iwr_utils
+import xbm_iwr_utils
 from tqdm import tqdm
-
-#%%
 
 def HMM_to_xbm(abbrev, nSites, startXBM, xbm_file, xbm_out, abbrev_file_xbm, last_node, historical_column, r):
     nYears = 105
@@ -83,7 +80,7 @@ def HMM_to_xbm(abbrev, nSites, startXBM, xbm_file, xbm_out, abbrev_file_xbm, las
     writeNewStatemodFiles(abbrev_file_xbm, abbrev, startXBM, r, 1, MonthlyQ_s, xbm_out)
 
 
-#%%
+
 name = 'Upper_Colorado'
 abbrev = 'cm'
 nSites = 208
@@ -98,7 +95,7 @@ r = 0
 for r in range(1000):
     HMM_to_xbm(abbrev, nSites, startXBM, xbm_file, xbm_out, abbrev_file_xbm, last_node, historical_column, r)
 print('Done')
-#%%
+
 name='Gunnison'
 abbrev='gm'
 nSites=139
@@ -113,7 +110,7 @@ last_node = -1
 for r in range(0,1000):
     HMM_to_xbm(abbrev, nSites, startXBM, xbm_file, xbm_out, abbrev_file_xbm, last_node, historical_column,r)
 print('Done')
-#%%
+
 name='San_Juan'
 abbrev='sj'
 nSites=165
@@ -129,7 +126,7 @@ historical_column=4
 for r in range(0, 1000):
     HMM_to_xbm(abbrev, nSites, startXBM, xbm_file, xbm_out, abbrev_file_xbm, last_node, historical_column, r)
 print('Done')
-#%%
+
 name='Yampa'
 abbrev='ym'
 nSites=94
@@ -144,7 +141,7 @@ for r in range(0, 1000):
     HMM_to_xbm(abbrev, nSites, startXBM, xbm_file, xbm_out, abbrev_file_xbm, last_node, historical_column, r)
 print('Done')
 
-#%%
+
 name='White'
 abbrev='wm'
 nSites=43

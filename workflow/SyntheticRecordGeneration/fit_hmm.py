@@ -1,4 +1,3 @@
-#%%
 import numpy as np
 from hmmlearn import hmm
 
@@ -17,6 +16,7 @@ def fit_HMM(annual_Q_h_path, start_year):
                 -transition_matrix:                    the transition matrix from one state to another
                 -hidden_states:                        an array of hidden states during the historical period
         """
+
         # load data
         AnnualQ_h_all = np.loadtxt(annual_Q_h_path, delimiter=',', skiprows=1)
 
@@ -50,29 +50,14 @@ def fit_HMM(annual_Q_h_path, start_year):
         return dry_state_means, wet_state_means, covariance_matrix_dry, covariance_matrix_wet, \
                transition_matrix, hidden_states
 
-#%%
 # Fit the HMM with 75 years of historical data
-LR_dry_means, LR_wet_means, LR_covariance_dry, LR_covariance_wet, LR_transition_matrix, LR_hidden_states = \
+dry_means, wet_means, covariance_dry, covariance_wet, transition_matrix, hidden_states = \
         fit_HMM('../../historical_data/all_basins.csv', 30)
 
 #%% save the HMM parameters
-np.savetxt('HMM_parameters/LR/dry_state_means.txt',LR_dry_means)
-np.savetxt('HMM_parameters/LR/wet_state_means.txt',LR_wet_means)
-np.savetxt('HMM_parameters/LR/covariance_matrix_dry.txt',LR_covariance_dry)
-np.savetxt('HMM_parameters/LR/covariance_matrix_wet.txt',LR_covariance_wet)
-np.savetxt('HMM_parameters/LR/transition_matrix.txt', LR_transition_matrix)
-#%%
-np.savetxt('HMM_parameters/LR/hist_hidden_states.txt', LR_hidden_states)
-#%%
-# Fit the HMM with 730 years of historical data
-SR_dry_means, SR_wet_means, SR_covariance_dry, SR_covariance_wet, SR_transition_matrix, SR_hidden_states = \
-        fit_HMM('../../historical_data/all_basins.csv', 75)
-#%%
-# save the HMM parameters
-np.savetxt('HMM_parameters/SR/dry_state_means.txt',SR_dry_means)
-np.savetxt('HMM_parameters/SR/wet_state_means.txt',SR_wet_means)
-np.savetxt('HMM_parameters/SR/covariance_matrix_dry.txt',SR_covariance_dry)
-np.savetxt('HMM_parameters/SR/covariance_matrix_wet.txt',SR_covariance_wet)
-np.savetxt('HMM_parameters/SR/transition_matrix.txt', SR_transition_matrix)
-#%%
-np.savetxt('HMM_parameters/SR/hist_hidden_states.txt', SR_hidden_states)
+np.savetxt('HMM_parameters/dry_state_means.txt',dry_means)
+np.savetxt('HMM_parameters/wet_state_means.txt',wet_means)
+np.savetxt('HMM_parameters/covariance_matrix_dry.txt',covariance_dry)
+np.savetxt('HMM_parameters/covariance_matrix_wet.txt',covariance_wet)
+np.savetxt('HMM_parameters/transition_matrix.txt', transition_matrix)
+np.savetxt('HMM_parameters/hist_hidden_states.txt', hidden_states)

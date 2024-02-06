@@ -54,7 +54,4 @@ def generate_synthetic_records(ensemble_type, num_syn_records):
         np.savetxt('Synthetic_records/' + ensemble_type + '/AnnualQ_s' + str(i) + '.txt', AnnualQ_s)
 
 # Generate synthetic traces based off the 75 year record
-generate_synthetic_records("LR", 1000)
-
-# Generate synthetic traces based off the 30 year record
-generate_synthetic_records("SR", 1000)
+generate_synthetic_records("baseline", 1000)
