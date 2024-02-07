@@ -55,9 +55,9 @@ dry_means, wet_means, covariance_dry, covariance_wet, transition_matrix, hidden_
         fit_HMM('../../historical_data/all_basins.csv', 30)
 
 #%% save the HMM parameters
-np.savetxt('HMM_parameters/dry_state_means.txt',dry_means)
-np.savetxt('HMM_parameters/wet_state_means.txt',wet_means)
-np.savetxt('HMM_parameters/covariance_matrix_dry.txt',covariance_dry)
-np.savetxt('HMM_parameters/covariance_matrix_wet.txt',covariance_wet)
-np.savetxt('HMM_parameters/transition_matrix.txt', transition_matrix)
-np.savetxt('HMM_parameters/hist_hidden_states.txt', hidden_states)
+np.savetxt('../../HMM_parameters/dry_state_means.txt',dry_means)
+np.savetxt('../../HMM_parameters/wet_state_means.txt',wet_means)
+np.savetxt('../../HMM_parameters/covariance_matrix_dry.txt',covariance_dry)
+np.savetxt('../../HMM_parameters/covariance_matrix_wet.txt',covariance_wet)
+np.savetxt('../../HMM_parameters/transition_matrix.txt', transition_matrix)
+np.savetxt('../../HMM_parameters/hist_hidden_states.txt', hidden_states)
