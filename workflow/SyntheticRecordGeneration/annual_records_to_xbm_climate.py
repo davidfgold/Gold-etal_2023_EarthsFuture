@@ -6,6 +6,18 @@ import xbm_iwr_utils
 from tqdm import tqdm
 
 def HMM_to_xbm(abbrev, nSites, startXBM, xbm_file, xbm_out, abbrev_file_xbm, last_node, historical_column, r):
+    '''
+    Disaggregates annual synthetic records across space and time and writes new xbm files for input to StateMod
+
+    :param abbrev:            string, abbreviation for current basin
+    :param nSites:            float, number of nodes in current basin
+    :param startXBM:          float, line number where comments in xbm file end
+    :param xbm_file:          string, xbm file from historical record for input to organize monthly function in xbm_iwr_utils
+    :param abbrev_file_xbm:   string, base name of xbm file to be written
+    :param last node:         float, node in the StateMod network that data is fit to (usually -1, sometimes -2 or -3)
+    :param historical_column: float, column of historical data with basin data
+    :param r:                 float, realization number
+    '''
     nYears = 105
     AnnualQ_s = np.array(pd.read_csv('../../Synthetic_records/ClimateAdjusted_zero_zero_five/AnnualQ_s' + str(r) + '.txt', sep=' ',
                                      header=None))
