@@ -1,6 +1,6 @@
 _your zenodo badge here_
 
-# Gold-etal_2023_EarthsFuture
+# Gold-etal_2024_EarthsFuture
 
 **A Multi-site Hidden Markov Model Synthetic Streamflow Generator to Evaluate Multisectoral Drought Vulnerability in Colorado’s West Slope Basins**
 
