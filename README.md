@@ -93,4 +93,9 @@ Use the scripts found in the `figures` directory to reproduce the figures used i
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |
-| `generate_figures.py` | Script to generate my figures | `python3 generate_figures.py -i /path/to/inputs -o /path/to/outuptdir` |
+| `Fig4-DroughtFreqSeverity.py` | Generates Figure 4 | `python3 Fig4-DroughtFreqSeverity.py`|
+| `Fig5-SpatialTemporalDroughts.py` | Generates Figure 5 | `python3 Fig5-SpatialTemporalDroughts.py`|
+| `Fig6-PowellOutflows.py` | Generates Figure 6 | `python3 Fig6-PowellOutflows.py` |
+| `Fig7-ReservoirTeaCups.py` | Generates Figure 7 | `python3 Fig7-ReservoirTeaCups.py` |
+| `Fig8-EnvironmentalFlows.py` | Generates Figure 8 | `python3 Fig8-EnvironmentalFlows.py` |
+| `Fig9-CUShortage.py` | Generates Figure 9 | `python3 Fig9-CUShortage.py` |
