@@ -81,7 +81,6 @@ This experiment has three main phases. First, the multi-site HMM is fit to the h
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |
-|
 | `ProcessPowellOutflows.py` | Extracts the total annual deliveries to Lake Powell for each realization | `python3 ProcessPowellOutflows.py` |
 |`extractCUShortage.py` | Extracts the total annual consumptive use shortage from each basin for each realization | `python3 extractCUShortage.py` |
 | `xre_to_csv.py` | Extracts storage data from a reservoir of interest from .xre files to csv files | `python3 xre_to_csv.py` |
