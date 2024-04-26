@@ -92,6 +92,7 @@ Use the scripts found in the `figures` directory to reproduce the figures used i
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |
+| `Fig3-MonthlyComparison.py` | Generates Figure 3 | `python3 Fig3-MonthlyComparison.py`|
 | `Fig4-DroughtFreqSeverity.py` | Generates Figure 4 | `python3 Fig4-DroughtFreqSeverity.py`|
 | `Fig5-SpatialTemporalDroughts.py` | Generates Figure 5 | `python3 Fig5-SpatialTemporalDroughts.py`|
 | `Fig6-PowellOutflows.py` | Generates Figure 6 | `python3 Fig6-PowellOutflows.py` |
