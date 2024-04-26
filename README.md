@@ -71,14 +71,18 @@ This experiment has three main phases. First, the multi-site HMM is fit to the h
 | --- | --- | --- |
 | `sim_set_up.` | Creates 1000 directories, titled "S0_1" to "S999_1" and creates a symbolic link to the StateMod executable (step 4) within each directory | `./sim_set_up.sh` |
 | `gen_rsp.py` | Fills in a template .rsp file (which controls StatMod runs) | `python3 gen_rsp.py` |
-|`submit_mpi.sh`| runs the pythons script `mpi_batch_jobs.py` to batch StatemMod runs | `./submit_mpi.sh`|
+|`submit_mpi.sh`| runs the python script `mpi_batch_jobs.py` to batch StatemMod runs | `./submit_mpi.sh`|
+|`mpi_submit_parquet` | runs the python script `mpi_run_parquet.py` to compress .xdd files into parquet format | `./mpi_submit_parquet.sh`|
 
 4. Download and unzip the output data from my experiment [Output data](#output-data)
 5. Run the following scripts in the `workflow` directory to compare my outputs to those from the publication
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |
-| `compare.py` | Script to compare my outputs to the original | `python3 compare.py --orig /path/to/original/data.csv --new /path/to/new/data.csv` |
+| `ProcessPowellOutflows.py` | Extracts the total annual deliveries to Lake Powell for each realization | `python3 ProcessPowellOutflows.py` |
+|`extractCUShortage.py` | Extracts the total annual consumptive use shortage from each basin for each realization | `python3 extractCUShortage.py` |
+| `xre_to_csv.py` | Extracts storage data from a reservoir of interest from .xre files to csv files | `python3 xre_to_csv.py` |
+| `res_percentiles.py` | calculates reservoir storage percentiles across all realizations | `python3 res_percentiles` |
 
 ## Reproduce my figures
 Use the scripts found in the `figures` directory to reproduce the figures used in this publication.
