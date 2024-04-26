@@ -71,6 +71,7 @@ This experiment has three main phases. First, the multi-site HMM is fit to the h
 | --- | --- | --- |
 | `sim_set_up.` | Creates 1000 directories, titled "S0_1" to "S999_1" and creates a symbolic link to the StateMod executable (step 4) within each directory | `./sim_set_up.sh` |
 | `gen_rsp.py` | Fills in a template .rsp file (which controls StatMod runs) | `python3 gen_rsp.py` |
+|`submit_mpi.sh`| runs the pythons script `mpi_batch_jobs.py` to batch StatemMod runs | `./submit_mpi.sh`|
 
 4. Download and unzip the output data from my experiment [Output data](#output-data)
 5. Run the following scripts in the `workflow` directory to compare my outputs to those from the publication
