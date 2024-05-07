@@ -3,9 +3,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import seaborn as sns
 import os
-os.chdir('C:/Users/dgold/Dropbox/Postdoc/IM3/Colorado/InternalVariabilityPaper/paper_code/final_data_analysis')
 
-#%%
 def moving_average(a, n=3) :
     '''
     Calculates the moving average over n periods
@@ -42,33 +40,34 @@ def calculate_moving_ave_percentile(ensemble, duration, p, hist, length):
 
     return percentile_mov
 
-#%%
+
 # read in historical data
-cm_hist = np.loadtxt('../../Results/cm/baseline/cm_hist_outflow.csv', delimiter=',')
-gm_hist = np.loadtxt('../../Results/gm/baseline/gm_hist_outflow.csv', delimiter=',')
-ym_hist = np.loadtxt('../../Results/ym/baseline/ym_hist_outflow.csv', delimiter=',')
-wm_hist = np.loadtxt('../../Results/wm/baseline/wm_hist_outflow.csv', delimiter=',')
-sj_hist = np.loadtxt('../../Results/sj/baseline/sj_hist_outflow.csv', delimiter=',')
+cm_hist = np.loadtxt('figureData/cm/baseline/cm_hist_outflow.csv', delimiter=',')
+gm_hist = np.loadtxt('figureData/gm/baseline/gm_hist_outflow.csv', delimiter=',')
+ym_hist = np.loadtxt('figureData/ym/baseline/ym_hist_outflow.csv', delimiter=',')
+wm_hist = np.loadtxt('figureData/wm/baseline/wm_hist_outflow.csv', delimiter=',')
+sj_hist = np.loadtxt('figureData/sj/baseline/sj_hist_outflow.csv', delimiter=',')
 
 total_hist = cm_hist + gm_hist + ym_hist + wm_hist + sj_hist
 
 # read in baseline data
-cm_baseline = np.loadtxt('../../Results/cm/baseline/cm_baseline_outflow.csv', delimiter=',')
-gm_baseline = np.loadtxt('../../Results/gm/baseline/gm_baseline_outflow_filled.csv', delimiter=',')
-ym_baseline = np.loadtxt('../../Results/ym/baseline/ym_baseline_outflow_filled.csv', delimiter=',')
-wm_baseline = np.loadtxt('../../Results/wm/baseline/wm_baseline_outflow_filled.csv', delimiter=',')
-sj_baseline = np.loadtxt('../../Results/sj/baseline/sj_baseline_outflow.csv', delimiter=',')
+cm_baseline = np.loadtxt('figureData/cm/baseline/cm_baseline_outflow.csv', delimiter=',')
+gm_baseline = np.loadtxt('figureData/gm/baseline/gm_baseline_outflow_filled.csv', delimiter=',')
+ym_baseline = np.loadtxt('figureData/ym/baseline/ym_baseline_outflow_filled.csv', delimiter=',')
+wm_baseline = np.loadtxt('figureData/wm/baseline/wm_baseline_outflow_filled.csv', delimiter=',')
+sj_baseline = np.loadtxt('figureData/sj/baseline/sj_baseline_outflow.csv', delimiter=',')
 
 total_baseline = cm_baseline.flatten() + gm_baseline.flatten() + ym_baseline.flatten() + wm_baseline.flatten() +\
                  sj_baseline.flatten()
-# read in the climate data
-cm_climate = np.loadtxt('../../Results/cm/AdjustedClimate/cm_AdjustedClimate_outflow.csv', delimiter=',')
-gm_climate = np.loadtxt('../../Results/gm/AdjustedClimate/gm_AdjustedClimate_outflow.csv', delimiter=',')
-ym_climate = np.loadtxt('../../Results/ym/AdjustedClimate/ym_AdjustedClimate_outflow.csv', delimiter=',')
-wm_climate = np.loadtxt('../../Results/wm/AdjustedClimate/wm_AdjustedClimate_outflow.csv', delimiter=',')
-sj_climate = np.loadtxt('../../Results/sj/AdjustedClimate/sj_AdjustedClimate_outflow.csv', delimiter=',')
 
-#%% A small number of Southwest realizations crashed due to Statemod problems, remove them from the ensemble
+# read in the climate data
+cm_climate = np.loadtxt('figureData/cm/AdjustedClimate/cm_AdjustedClimate_outflow.csv', delimiter=',')
+gm_climate = np.loadtxt('figureData/gm/AdjustedClimate/gm_AdjustedClimate_outflow.csv', delimiter=',')
+ym_climate = np.loadtxt('figureData/ym/AdjustedClimate/ym_AdjustedClimate_outflow.csv', delimiter=',')
+wm_climate = np.loadtxt('figureData/wm/AdjustedClimate/wm_AdjustedClimate_outflow.csv', delimiter=',')
+sj_climate = np.loadtxt('figureData/sj/AdjustedClimate/sj_AdjustedClimate_outflow.csv', delimiter=',')
+
+# A small number of Southwest realizations crashed due to Statemod problems, remove them from the ensemble
 sj_error = [13, 17, 74, 110, 111, 116, 145, 162, 203, 208, 224, 225, 267, 288, 346, 459, 483, 492, 563, 588, 664, 713,
             727, 843, 845, 917, 974]
 
@@ -112,7 +111,6 @@ min_baseline = np.min(baseline_percentiles, axis=1)
 max_climate = np.max(climate_percentiles, axis=1)
 min_climate = np.min(climate_percentiles, axis=1)
 
-#%%
 # Create boxplots
 # 1. make a flat array of all percentile data
 transposed_baseline_percentiles = np.transpose(baseline_percentiles)*1233.48/1000000
@@ -145,7 +143,7 @@ twentyfive_years = np.ones(1946)*25
 thirty_years = np.ones(1946)*30
 
 all_years = np.hstack([one_year,five_years, ten_years, fifteen_years, twenty_years, twentyfive_years, thirty_years])
-#%%
+
 # 4. combine into a single array
 both_df['Duration'] = all_years
 both_df['Ensemble'] = both_names
@@ -155,7 +153,7 @@ years = [0, 5, 10, 15, 20, 25, 30]
 plot_hist = np.zeros(7)
 for i in range(7):
     plot_hist[i] = hist_percentiles[years[i]]
-#%%
+
 # 6. set up boxplot parameters
 my_pal = {'baseline': 'cornflowerblue', 'climate': 'indianred'}
 
@@ -166,7 +164,7 @@ PROPS = {
     'capprops':{'color':'none'}
 }
 
-#%% 7. plot boxplots
+# 7. plot boxplots
 fig, axes = plt.subplots(2,1, figsize=(10,7))
 
 axes[0].plot(np.arange(105), total_hist*1233.48/1000000)
@@ -187,6 +185,6 @@ axes[1].set_ylabel('Combined Outflow (Million $m^3$)')
 axes[1].set_xlabel('Duration')
 axes[1].legend(loc='lower right')
 plt.tight_layout()
-plt.savefig('../../Figures/InitialSubmissionFigures/AdjustedClimate/Seminar/Powell_full.pdf')
+plt.savefig('Powell_full.pdf')
 
 #plt.show()
