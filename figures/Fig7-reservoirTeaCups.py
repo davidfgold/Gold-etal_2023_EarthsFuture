@@ -2,9 +2,7 @@ import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 import matplotlib.cm as cm
-import os
-os.chdir('paper_code/final_data_analysis/')
-#%%
+
 def find_x_coords(yvalues):
     '''
     returns x coordinates for teacup plot
@@ -24,7 +22,7 @@ def find_x_coords(yvalues):
 
     return x1, x2
 
-#%%
+
 def make_teacups(res_abbrev, hist_median, crit):
     '''
     Plots teacup diagrams for a reservoir for both baseline and climate ensemble
@@ -33,11 +31,11 @@ def make_teacups(res_abbrev, hist_median, crit):
     :param crit:                            float, low storage level to plot as a benchmark
     '''
 
-    baseline_rels = np.loadtxt('../../Results/reservoir/' + res_abbrev + '_realizationPercentiles_baseline_run_1_to_99.csv',
+    baseline_rels = np.loadtxt('figureData/reservoir/' + res_abbrev + '_realizationPercentiles_baseline_run_1_to_99.csv',
                                delimiter=',')
     baseline_means = np.mean(baseline_rels, axis=1)/10000
 
-    climate_rels = np.loadtxt('../../Results/reservoir/' + res_abbrev + '_realizationPercentiles_AdjustedClimate_05_1_to_99.csv',
+    climate_rels = np.loadtxt('figureData/reservoir/' + res_abbrev + '_realizationPercentiles_AdjustedClimate_05_1_to_99.csv',
                               delimiter=',')
     climate_means = np.mean(climate_rels, axis=1)/10000
 
@@ -124,8 +122,8 @@ def make_teacups(res_abbrev, hist_median, crit):
 
     ax.axes.get_xaxis().set_visible(False)
     #plt.show()
-    plt.savefig('../../Figures/InitialSubmissionFigures/AdjustedClimate/Seminar/' + res_abbrev + '_mod_teacups_raw.png', bbox_inches='tight')
-#%%
+    plt.savefig(res_abbrev + '_mod_teacups_raw.png', bbox_inches='tight')
+
 make_teacups('BM', 54.8, 20.8)
 make_teacups('LG', 37.9, 9.6)
 make_teacups('MR', 29.3, 15.7)
@@ -161,12 +159,12 @@ def Hist_make_teacups(hist_median, xlim, ylim):
     ax.plot([129.45, 172.6], [0, 86.3], c='k')
     ax.plot([0,172.6], [86.3, 86.3], c='k')
     ax.axes.get_xaxis().set_visible(False)
-    plt.savefig('../../Figures/InitialSubmissionFigures/AdjustedClimate/Seminar/TeaCupBuild_med.png', bbox_inches='tight')
+    plt.savefig('TeaCupBuild_med.png', bbox_inches='tight')
 
-#%%
+
 Hist_make_teacups(54.8, 366.75, 86.3)
 
-#%% Show teacups of historical
+# Show teacups of historical
 
 def Hist_make_teacups_low(hist_median, xlim, ylim, crit):
     # make the plot
@@ -208,7 +206,7 @@ def Hist_make_teacups_low(hist_median, xlim, ylim, crit):
     ax.plot([129.45, 172.6], [0, 86.3], c='k')
     ax.plot([0,172.6], [86.3, 86.3], c='k')
     ax.axes.get_xaxis().set_visible(False)
-    plt.savefig('../../Figures/InitialSubmissionFigures/AdjustedClimate/Seminar/TeaCupBuild_LOW.png', bbox_inches='tight')
+    plt.savefig('TeaCupBuild_LOW.png', bbox_inches='tight')
     #plt.show()
-#%%
+
 Hist_make_teacups_low(54.8, 366.75, 86.3, 20.8)
