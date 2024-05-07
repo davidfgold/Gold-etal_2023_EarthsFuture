@@ -77,7 +77,7 @@ This experiment has three main phases. First, the multi-site HMM is fit to the h
 | `organize_parquet.sh` | organizes all parquet files into a single directory for easy file transfer | `./organize_parquet'|
 
 4. Download and unzip the output data from my experiment [Output data](#output-data)
-5. Run the following scripts in the `workflow` directory to compare my outputs to those from the publication
+5. Run the following scripts in the `workflow/ProcessResults` directory to compare my outputs to those from the publication
 
 | Script Name | Description | How to Run |
 | --- | --- | --- |
