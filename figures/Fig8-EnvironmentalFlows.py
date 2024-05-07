@@ -3,10 +3,8 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import os
 import seaborn as sns
-os.chdir('C:/Users/dgold/Dropbox/Postdoc/IM3/Colorado/InternalVariabilityPaper/paper_code/final_data_analysis')
 
-
-#%% Calculate historical frequency of environmental flows
+# Calculate historical frequency of environmental flows
 
 # upper Colorado
 pq_file = pd.read_parquet('../../Results/cm/historical/parquet/cm2015B.parquet', engine='pyarrow')
@@ -15,16 +13,7 @@ hist_tots = fifteen_mile[fifteen_mile['month']=='TOT']
 hist_shortage = hist_tots['shortage_total'].astype(float)
 hist_shortage= hist_shortage.to_numpy()
 cm_hist = np.count_nonzero(hist_shortage)
-#%%
-# Gunnison
-pq_file_gunn = pd.read_parquet('../../Results/gm/historical/parquet/gm2015B.parquet', engine='pyarrow')
-USFWS = pq_file_gunn[pq_file_gunn['structure_id'] == '42_USFWS']
-hist_tots = USFWS[USFWS['month']=='TOT']
-hist_shortage = hist_tots['shortage_total'].astype(float)
-hist_shortage = hist_shortage.to_numpy()
-gm_hist = np.count_nonzero(hist_shortage)
-print(gm_hist)
-#%%
+
 # White
 pq_file = pd.read_parquet('../../Results/wm/historical/parquet/wm2015B.parquet', engine='pyarrow')
 
@@ -50,6 +39,7 @@ for i in range(105):
         fails += 1
 
 wm_hist = fails
+
 #%% Yampa
 pq_file = pd.read_parquet('../../Results/ym/historical/parquet/ym2015B.parquet', engine='pyarrow')
 
@@ -108,47 +98,47 @@ gm_hist = fails
 # load the HMM ensembles, calculate the average and the 95th percentiles
 
 # colorado
-cm_baseline = np.loadtxt('../../Results/cm/baseline_env_shortage_freq.csv', delimiter=',')
+cm_baseline = np.loadtxt('figureData/cm/baseline_env_shortage_freq.csv', delimiter=',')
 cm_baseline_mean = np.mean(cm_baseline)
 cm_baseline_ninetyfifth = np.percentile(cm_baseline, 95)
 
-cm_climate = np.loadtxt('../../Results/cm/AdjustedClimate_env_shortage_freq.csv', delimiter=',')
+cm_climate = np.loadtxt('figureData/cm/AdjustedClimate_env_shortage_freq.csv', delimiter=',')
 cm_climate_mean = np.mean(cm_climate)
 cm_climate_ninetyfifth = np.percentile(cm_climate, 95)
 
 # Gunnison
-gm_baseline = np.loadtxt('../../Results/gm/baseline_env_shortage_freq.csv', delimiter=',')
+gm_baseline = np.loadtxt(figureData/gm/baseline_env_shortage_freq.csv', delimiter=',')
 gm_baseline_mean = np.mean(gm_baseline)
 gm_baseline_ninetyfifth = np.percentile(gm_baseline, 95)
 
-gm_climate = np.loadtxt('../../Results/gm/AdjustedClimate_env_shortage_freq_flow.csv', delimiter=',')
+gm_climate = np.loadtxt('figureData/gm/AdjustedClimate_env_shortage_freq_flow.csv', delimiter=',')
 gm_climate_mean = np.mean(gm_climate)
 gm_climate_ninetyfifth = np.percentile(gm_climate, 95)
 
 # Yampa
-ym_baseline = np.loadtxt('../../Results/ym/baseline_env_shortage_freq.csv', delimiter=',')
+ym_baseline = np.loadtxt('figureData/ym/baseline_env_shortage_freq.csv', delimiter=',')
 ym_baseline_mean = np.mean(ym_baseline)
 ym_baseline_ninetyfifth = np.percentile(ym_baseline, 95)
 
-ym_climate = np.loadtxt('../../Results/ym/AdjustedClimate_env_shortage_freq.csv', delimiter=',')
+ym_climate = np.loadtxt('figureData/ym/AdjustedClimate_env_shortage_freq.csv', delimiter=',')
 ym_climate_mean = np.mean(ym_climate)
 ym_climate_ninetyfifth = np.percentile(ym_climate, 95)
 
 # White
-wm_baseline = np.loadtxt('../../Results/wm/baseline_env_shortage_freq.csv', delimiter=',')
+wm_baseline = np.loadtxt('figureData/wm/baseline_env_shortage_freq.csv', delimiter=',')
 wm_baseline_mean = np.mean(wm_baseline)
 wm_baseline_ninetyfifth = np.percentile(wm_baseline, 95)
 
-wm_climate = np.loadtxt('../../Results/wm/AdjustedClimate_env_shortage_freq.csv', delimiter=',')
+wm_climate = np.loadtxt('figureData/wm/AdjustedClimate_env_shortage_freq.csv', delimiter=',')
 wm_climate_mean = np.mean(wm_climate)
 wm_climate_ninetyfifth = np.percentile(wm_climate, 95)
 
 # San Juan / Dolores (just dolores in this case)
-sj_baseline = np.loadtxt('../../Results/sj/baseline_env_shortage_freq.csv', delimiter=',')
+sj_baseline = np.loadtxt('figureData/sj/baseline_env_shortage_freq.csv', delimiter=',')
 sj_baseline_mean = np.mean(sj_baseline)
 sj_baseline_ninetyfifth = np.percentile(sj_baseline, 95)
 
-sj_climate = np.loadtxt('../../Results/sj/AdjustedClimate_env_shortage_freq.csv', delimiter=',')
+sj_climate = np.loadtxt('figureData/sj/AdjustedClimate_env_shortage_freq.csv', delimiter=',')
 sj_climate_mean = np.mean(sj_climate)
 sj_climate_ninetyfifth = np.percentile(sj_climate, 95)
 
@@ -195,5 +185,5 @@ for i in range(5):
 axes.flatten()[5].set_visible(False)
 plt.tight_layout()
 #plt.show()
-plt.savefig('../../Figures/InitialSubmissionFigures/AdjustedClimate/EnvironmentalFlow_mar.pdf')
+plt.savefig('EnvironmentalFlow.pdf')
 
