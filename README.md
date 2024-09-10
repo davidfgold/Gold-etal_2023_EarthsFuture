@@ -16,7 +16,7 @@ The state of Colorado’s West Slope Basins are critical headwaters of the Color
 
 
 ## Journal reference
-Gold, D.F, Reed, P.M. & Gupta, R.S. (In Prep).Exploring the Spatially Compounding Multi-sectoral Drought Vulnerabilities in Colorado's West Slope River Basins. Earth's Future
+Gold, D.F, Reed, P.M. & Gupta, R.S. (In Revision).Exploring the Spatially Compounding Multi-sectoral Drought Vulnerabilities in Colorado's West Slope River Basins. Earth's Future
 ## Code reference
 In process.  
 
