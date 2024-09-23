@@ -1,4 +1,4 @@
-_your zenodo badge here_
+[![DOI](https://zenodo.org/badge/411825117.svg)](https://zenodo.org/doi/10.5281/zenodo.5816128)
 
 # Gold-etal_2024_EarthsFuture
 
